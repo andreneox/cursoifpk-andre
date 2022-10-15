@@ -1,4 +1,5 @@
 const modulo = require ("./modulo")
+const chalk = require('chalk')
 
 
 //modulo.subtrair(8,2)
@@ -19,9 +20,19 @@ class Aluno
 
 }
 
-aluno01 = new Aluno ("Andre", "a001",[0, 8, 7])
+
+aluno01 = new Aluno ("Andre", "a001",[6, 8, 7])
+
+
+aluno02 = new Aluno ("Maria", "a002", [8,9,5])
+
+
+
 aluno01.media = modulo.calcularMedia(aluno01.notas)
+aluno02.media = modulo.calcularMedia(aluno02.notas)
 
-
-
-console.log(aluno01.media)
+if (aluno01.media >= 7) {
+    console.log (chalk.blueBright(aluno01.nome+" teve a média "+aluno01.media))
+} else {
+    console.log (chalk.red(aluno01.nome+" teve a média "+aluno01.media))
+}
