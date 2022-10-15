@@ -2,15 +2,15 @@ class Aluno
 {
     nome;
     matricula;
-    notas = []
+    notas ;
     media;
 
-        constructor(nome, matricula)
+        constructor(nome, matricula, notas)
         {
             this.nome = nome;
             this.matricula = matricula;
-               
-            
+            this.notas = notas;
+                 
         }
 
 }
@@ -24,11 +24,11 @@ function calcularMedia(notas) {
     return soma / notas.length;
 }
 
-aluno01 = new Aluno ("Andre", "a001",)
-aluno01.notas = [6, 8, 7]
+aluno01 = new Aluno ("Andre", "a001",[6, 8, 7])
 
-aluno02 = new Aluno ("Maria", "a002")
-aluno02.notas = [8,9,5]
+
+aluno02 = new Aluno ("Maria", "a002", [8,9,5])
+
 
 
 aluno01.media = calcularMedia(aluno01.notas)
