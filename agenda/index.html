@@ -7,8 +7,11 @@
     <title>Cadastro de Pessoas</title>
 </head>
 <body>
-    <form action="" method="post">
-        <input type="text" name="nome" id="nome" placeholder="Digite o seu nome">
+    <form action="/pessoas" method="post">
+        <label for="">Nome: </label>
+        <input type="text" name="nome" id="nome" placeholder="Digite o seu nome"><br>
+        <label for="">Ano de Nascimento: </label>
+        <input type="text" name="nascimento" id="nascimento" placeholder="Digite o ano de nascimento">
         <button type="submit">Salvar</button>
     </form>
 </body>

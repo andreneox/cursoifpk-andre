@@ -1,5 +1,8 @@
+
 const path = require('path')
-let pessoas = ['john', 'mary']
+let pessoas = []
+
+
 
 
 class PessoasController {
@@ -10,7 +13,14 @@ class PessoasController {
 
     static store(req, res)
     {
+        let pessoa = req.body
+        pessoa.idade = 2022 - pessoa.nascimento
+        pessoas.push(pessoa)
         
+        console.log(pessoas)
+        
+
+        res.redirect('/')
     }
 }
 
