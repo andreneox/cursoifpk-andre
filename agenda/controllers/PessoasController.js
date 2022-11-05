@@ -1,10 +1,10 @@
 
 const path = require('path')
 let pessoas = []
-let usuarios = [
-    {username: 'andre', password:'123'},
-    {username: 'mary', password:'321'},
-]
+//let usuarios = [
+   // {username: 'andre', password:'123'},
+  //  {username: 'mary', password:'321'},
+//]
 
 
 
@@ -17,10 +17,10 @@ class PessoasController {
         res.render('index')
     }
 
-    static sobre (req, res)
+   static lista (req, res)
     {
         
-        res.render('sobre', {
+        res.render('lista', {
             usuarios:usuarios
         })
     }
@@ -48,10 +48,17 @@ class PessoasController {
         console.log(pessoas)
         
 
-        res.render('index', {
+        res.render('index',  {
             pessoas:pessoas
         })
     }
+
+    static cadastro(req,res)
+    {
+        
+        res.render('cadastro')
+    }
+
 }
 
 
