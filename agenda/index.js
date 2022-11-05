@@ -2,10 +2,17 @@
 const express = require ('express')
 const app = express()
 
+require('dotenv').config()
+
+
+const helpers = require('./helpers/handlebars')
+
 //setup express-handlebars
 //instalar npm install express-handlebars
 const { engine } = require('express-handlebars')
-app.engine('handlebars', engine())
+app.engine('handlebars', engine({
+    helpers: helpers
+}))
 app.set('view engine', 'handlebars')
 
 
@@ -19,9 +26,9 @@ app.use(express.urlencoded({extended:true}))
 app.use('/', routes)
 
 
-const port = 3000
 
 
-app.listen(port, ()=>{
-    console.log('Server rodando na porta: '+port)
+
+app.listen(process.env.porta, ()=>{
+    console.log('Server rodando na porta')
 })

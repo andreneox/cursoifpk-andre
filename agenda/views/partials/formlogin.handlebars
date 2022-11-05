@@ -1,5 +1,5 @@
-<form action="/login" method="post">
-    
+<form class="row" action="/login" method="post">
+     <br>
   <div class="mb-3">
     <label for="login" class="form-label">Login: </label>
     <input type="text" class="form-control" name="login" id="login" placeholder="Digite seu login">
@@ -10,9 +10,20 @@
     <input type="text" class="form-control" name="password" id="password" placeholder="Digite sua senha">
   </div>
   
-  <button type="submit" class="btn btn-success">Salvar</button>
+  <button type="submit" class="btn btn-success">Salvar Contato</button>
 
 
 
 
 </form>
+
+
+{{!-- {{auth}}
+{{#if auth}}
+<br>
+
+<h2>Voce esta logado!</h2>
+{{else}}
+<br>
+<h2>Senha Incorreta</h2>
+{{/ if}} --}}

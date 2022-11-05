@@ -4,13 +4,35 @@ const routes = express.Router()
 
 routes.get('/', PessoasController.index)
 
-routes.post('/', PessoasController.store)
 
-routes.post('/login', PessoasController.login)
+// rotas do cadastro
+routes.get('/cadastro', PessoasController.cadastro)
 
-routes.get('/sobre', PessoasController.sobre)
+routes.post('/cadastro', PessoasController.salvar)
 
-routes.post('/pessoas', PessoasController.store)
+// rotas da lista
+routes.get('/lista', PessoasController.lista)
+
+
+
+
+// rotas do cadastro
+routes.get('/buscarcep', PessoasController.buscarCep)
+
+
+
+
+
+
+
+// DA ULTIMA AULA 
+// routes.post('/', PessoasController.store)
+
+// routes.post('/login', PessoasController.login)
+
+// routes.get('/sobre', PessoasController.sobre)
+
+// routes.post('/pessoas', PessoasController.store)
 
 
 module.exports = routes
