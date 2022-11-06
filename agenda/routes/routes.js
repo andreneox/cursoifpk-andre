@@ -19,6 +19,8 @@ routes.get('/lista', PessoasController.lista)
 // rotas do cadastro
 routes.get('/buscarcep', PessoasController.buscarCep)
 
+routes.post('/buscarcep', PessoasController.buscarCep)
+
 
 
 

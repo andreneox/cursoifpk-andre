@@ -1,54 +1,8 @@
+<br><br>
+<div class="d-grid gap-4 col-6 mx-auto">
 
-<br>
-<h2>Página Inicial</h2>
-
-{{# if alerta}}
-<div class="alert alert-danger" role="alert">
-  Sem contato cadastrado!!
+  <a href="/cadastro" class="btn btn-info" type="button">Clique para cadastrar contato</a>
+  <a href="/lista" class="btn btn-info" type="button">Clique para listar todos os contatos</a>
+  <a href="/buscarcep" class="btn btn-info" type="button">Clique para pesquisar CEP</a>
+  
 </div>
-{{ else}}
-
-
-<table class="table">
-  <thead>
-    <tr>
-      
-      <th scope="col">Nome</th>
-      <th scope="col">Data de Nascimento</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">CEP</th>
-      <th>Ação</th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-
-    {{!-- primeira forma de lista para array--}}
-    {{# each pessoas}}
-    <tr>
-      <th >{{this.nome}}</th>
-      <td>{{ formatarData this.data_nascimento}}</td>
-      <td>{{this.telefone}}</td>
-      <td>{{this.cep}}</td>
-      <td>
-        <button type="button" class="btn btn-warning">Atualizar</button>
-        <button type="button" class="btn btn-danger">Apagar</button>
-      </td>
-    </tr>
-    {{/ each}}
-
-    {{!-- segunda forma de lista para objetos
-    {{# with pessoas}}
-    <tr>
-      <th >{{nome}}</th>
-      <td>{{data_nascimento}}</td>
-      <td>{{telefone}}</td>
-      <td>{{cep}}</td>
-    </tr>
-    {{/ with}} --}}
-
-  </tbody>
-</table>
-
-{{/ if}}

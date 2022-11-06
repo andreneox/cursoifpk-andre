@@ -37,7 +37,7 @@ class PessoasController {
     {
         let data = 
         pessoas.push(req.body)
-        res.redirect('/')
+        res.redirect('lista')
     }
 
     // controllers da lista
@@ -55,17 +55,17 @@ class PessoasController {
     }
 
     
- // controllers da buscarcep
+ // controllers para buscarcep
     static async buscarCep (req, res)
     {
 
-        let cep = '69042180'
+        let cep = req.body.cep
         let rota = process.env.api_base+''+cep+'/json/'
+        
+        
         let endereco = await axios.get(rota)
-
-
         .then(function (response) {
-            return response.data
+           return response.data
             console.log(response.data)
         })
         .catch(function (error) {
