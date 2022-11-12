@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars')
 const routes = require('./routes/routes')
 
 
-//setup para linkar as rotas
+//setup para linkar a0s rotas
 app.use(express.urlencoded({extended:true}))
 
 app.use('/', routes)

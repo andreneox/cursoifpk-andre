@@ -4,22 +4,25 @@ const routes = express.Router()
 
 routes.get('/', PessoasController.index)
 
-
-// rotas do cadastro
-routes.get('/cadastro', PessoasController.cadastro)
-
-routes.post('/cadastro', PessoasController.salvar)
-
-// rotas da lista
-routes.get('/lista', PessoasController.lista)
+routes.get('/pessoa', PessoasController.create)
 
 
 
+// // rotas do cadastro
+// routes.get('/cadastro', PessoasController.cadastro)
 
-// rotas do cadastro
-routes.get('/buscarcep', PessoasController.buscarCep)
+// routes.post('/cadastro', PessoasController.salvar)
 
-routes.post('/buscarcep', PessoasController.buscarCep)
+// // rotas da lista
+// routes.get('/lista', PessoasController.lista)
+
+
+
+
+// // rotas do cadastro
+// routes.get('/buscarcep', PessoasController.buscarCep)
+
+// routes.post('/buscarcep', PessoasController.buscarCep)
 
 
 

@@ -8,77 +8,112 @@ let pessoas = []
 
 let alerta = false
 
+
+const { Pessoa } = require('../models')
+
 // para teste
 // {nome: 'andre', data_nascimento: '28/09/1985', telefone: '99999 9999', cep: '69000 000'}
 
 
+
 class PessoasController {
 
-    static index(req,res)
-    {
-        if (pessoas.length > 0){
-            alerta =false
-        } else{
-            alerta =true
+        static async index (req,res)
+        {
+            const pessoas = await Pessoa.findAll({raw: true})
+            console.log(pessoas)
+
+            res.render('index', {
+                pessoas:pessoas
+            })
+        } 
+
+        static async create (req,res)
+        {
+            try {
+                    const pessoa = await Pessoa.create({
+
+                    nome: 'Jojo',
+                    email: 'jojo@email.com',
+                    data_nascimento: new Date ('1999-05-24')
+                })
+                
+            } catch (error) {
+                const pessoa = error
+            }
+    
+            res.redirect ('/')
         }
-        res.render('index', {
-            pessoas:pessoas,
-            alerta:alerta
-        })
-    }
+    } 
 
-    // controllers do cadastro
-    static cadastro (req, res)
-    {
-        res.render ('cadastro')
-    }
+module.exports = PessoasController
 
-    static salvar (req, res)
-    {
-        let data = 
-        pessoas.push(req.body)
-        res.redirect('lista')
-    }
 
-    // controllers da lista
-    static lista (req, res)
-    {
-        if (pessoas.length > 0){
-            alerta =false
-        } else{
-            alerta =true
-        }
-        res.render('lista', {
-            pessoas:pessoas,
-            alerta:alerta
-        })
-    }
+// class PessoasController {
+
+//     static index(req,res)
+//     {
+//         if (pessoas.length > 0){
+//             alerta =false
+//         } else{
+//             alerta =true
+//         }
+//         res.render('index', {
+//             pessoas:pessoas,
+//             alerta:alerta
+//         })
+//     }
+
+//     // controllers do cadastro
+//     static cadastro (req, res)
+//     {
+//         res.render ('cadastro')
+//     }
+
+//     static salvar (req, res)
+//     {
+//         let data = 
+//         pessoas.push(req.body)
+//         res.redirect('lista')
+//     }
+
+//     // controllers da lista
+//     static lista (req, res)
+//     {
+//         if (pessoas.length > 0){
+//             alerta =false
+//         } else{
+//             alerta =true
+//         }
+//         res.render('lista', {
+//             pessoas:pessoas,
+//             alerta:alerta
+//         })
+//     }
 
     
- // controllers para buscarcep
-    static async buscarCep (req, res)
-    {
+//  // controllers para buscarcep
+//     static async buscarCep (req, res)
+//     {
 
-        let cep = req.body.cep
-        let rota = process.env.api_base+''+cep+'/json/'
+//         let cep = req.body.cep
+//         let rota = process.env.api_base+''+cep+'/json/'
         
         
-        let endereco = await axios.get(rota)
-        .then(function (response) {
-           return response.data
-            console.log(response.data)
-        })
-        .catch(function (error) {
-            return error
-            console.log(error)
-        })
+//         let endereco = await axios.get(rota)
+//         .then(function (response) {
+//            return response.data
+//             console.log(response.data)
+//         })
+//         .catch(function (error) {
+//             return error
+//             console.log(error)
+//         })
 
-        res.render('endereco', {
-            endereco:endereco
-        })
-    }
-
-
+//         res.render('endereco', {
+//             endereco:endereco
+//         })
+//     }
 
 
 
@@ -86,7 +121,9 @@ class PessoasController {
 
 
 
-}
+
+
+
 //     static sobre (req, res)
 //     {
         
@@ -130,4 +167,3 @@ class PessoasController {
 
 
 
-module.exports = PessoasController
