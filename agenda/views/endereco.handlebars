@@ -1,0 +1,40 @@
+<br>
+<h2>Pesquisar CEP</h2>
+<br>
+
+{{> formbuscarcep}}
+
+<br>
+
+
+
+<div class="row">
+    <div class="mb-3 col-md-6">
+        {{# with endereco}}
+            <label for="endereco">Endereço:</label>
+            <input class="form-control" type="text" value="{{logradouro}}" aria-label="readonly input example" readonly>
+            <br>
+            <label for="endereco">Bairro:</label>
+            <input class="form-control" type="text" value="{{bairro}}" aria-label="readonly input example" readonly>
+            <br>
+            <label for="endereco">Cidade:</label>
+            <input class="form-control" type="text" value="{{localidade}}" aria-label="readonly input example" readonly>
+            <br>
+            <label for="endereco">Estado:</label>
+            <input class="form-control" type="text" value="{{uf}}" aria-label="readonly input example" readonly>
+            <br>
+           
+        {{/ with}}
+    </div>
+</div>
+
+
+
+<br><br>
+
+<div class=" col-md-12 text-center">
+
+    <a href="/" type="button" class="btn btn-secondary">Página Inicial</a>
+    
+</div>
+<br><br>

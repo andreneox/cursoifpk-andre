@@ -1,0 +1,63 @@
+<br>
+<h1>Lista de Contatos</h1>
+<br>
+
+{{# if alerta}}
+<div class="alert alert-danger" role="alert">
+  Sem contato cadastrado!!
+</div>
+{{ else}}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Nome</th>
+      <th scope="col">Data de Nascimento</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">CEP</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+    {{!-- primeira forma de lista para array--}}
+    {{# each pessoas}}
+    <tr>
+      <th >{{this.nome}}</th>
+      <td>{{ formatarData this.data_nascimento}}</td>
+      <td>{{this.telefone}}</td>
+      <td>{{this.cep}}</td>
+      <td>
+        <button type="button" class="btn btn-warning">Atualizar</button>
+        <button type="button" class="btn btn-danger">Apagar</button>
+      </td>
+    </tr>
+    {{/ each}}
+
+    {{!-- segunda forma de lista para objetos
+    {{# with pessoas}}
+    <tr>
+      <th >{{nome}}</th>
+      <td>{{data_nascimento}}</td>
+      <td>{{telefone}}</td>
+      <td>{{cep}}</td>
+    </tr>
+    {{/ with}} --}}
+
+  </tbody>
+</table>
+
+{{/ if}}
+
+<br><br>
+
+<div class=" col-md-12 text-center">
+
+    <a href="/" type="button" class="btn btn-secondary">Página Inicial</a>
+    
+</div>
+<br><br>

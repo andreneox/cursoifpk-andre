@@ -1,0 +1,24 @@
+<form class="row" action="/cadastro" method="post">
+       
+    <div class="mb-3 col-md-6">
+        <label for="exampleFormControlInput1" class="form-label">Nome:</label>
+        <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome">
+    </div>
+    <div class="mb-3 col-md-6">
+        <label for="exampleFormControlInput1" class="form-label">Data de Nascimento</label>
+        <input type="date" class="form-control" name="data_nascimento" id="data_nascimento" placeholder="Digite sua data de nascimento">
+    </div>
+    <div class="mb-3 col-md-6">
+        <label for="exampleFormControlInput1" class="form-label">Telefone</label>
+        <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite seu telefone">
+    </div>
+    <div class="mb-3 col-md-6">
+        <label for="exampleFormControlInput1" class="form-label">CEP</label>
+        <input type="text" class="form-control" name="cep" id="cep" placeholder="Digite seu cep">
+    </div>
+      
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+    <br><br><br>
+
+    {{pessoas}}
