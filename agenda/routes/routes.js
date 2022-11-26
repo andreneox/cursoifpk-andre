@@ -1,43 +1,15 @@
-const express = require ('express')
+const express = require('express')
 const PessoasController = require('../controllers/PessoasController')
 const routes = express.Router()
 
 routes.get('/', PessoasController.index)
 
-routes.get('/pessoa', PessoasController.create)
+routes.post('/cadastrar', PessoasController.cadastro)
 
+routes.get('/show/:id', PessoasController.show)
 
+routes.get('/atualizar/:id', PessoasController.update)
 
-// // rotas do cadastro
-// routes.get('/cadastro', PessoasController.cadastro)
-
-// routes.post('/cadastro', PessoasController.salvar)
-
-// // rotas da lista
-// routes.get('/lista', PessoasController.lista)
-
-
-
-
-// // rotas do cadastro
-// routes.get('/buscarcep', PessoasController.buscarCep)
-
-// routes.post('/buscarcep', PessoasController.buscarCep)
-
-
-
-
-
-
-
-// DA ULTIMA AULA 
-// routes.post('/', PessoasController.store)
-
-// routes.post('/login', PessoasController.login)
-
-// routes.get('/sobre', PessoasController.sobre)
-
-// routes.post('/pessoas', PessoasController.store)
-
+routes.get('/deletar/:id', PessoasController.deletar)
 
 module.exports = routes

@@ -1,34 +1,31 @@
-//setup express
-const express = require ('express')
+const express = require('express')
 const app = express()
-
+const routes = require('./routes/routes')
+const AuthController = require ('./controllers/AuthController')
+const middlewareValidaJwt = require ('./validarJwt')
+const apiroutes = require ('./routes/apiRoutes')
+const { engine } = require('express-handlebars')
 require('dotenv').config()
 
-
-const helpers = require('./helpers/handlebars')
-
-//setup express-handlebars
-//instalar npm install express-handlebars
-const { engine } = require('express-handlebars')
 app.engine('handlebars', engine({
-    helpers: helpers
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
 }))
-app.set('view engine', 'handlebars')
 
+app.set('view engine','handlebars')
 
-//setup routes
-const routes = require('./routes/routes')
-
-
-//setup para linkar a0s rotas
 app.use(express.urlencoded({extended:true}))
+
+app.use(express.json())
 
 app.use('/', routes)
 
+app.use('/api', middlewareValidaJwt, apiroutes)
 
+app.post('/login', AuthController.login)
 
-
-
-app.listen(process.env.porta, ()=>{
-    console.log('Server rodando na porta')
+app.listen(process.env.PORT, ()=>{
+    console.log('Servidor Ok!')
 })
