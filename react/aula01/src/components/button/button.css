@@ -1,0 +1,25 @@
+.btn-submit
+{
+    color: white;
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0;
+    margin: 3px;
+}
+
+.btn-alert
+{
+    color: white;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0;
+    margin: 3px;
+}
+
+.btn:hover
+{
+    background-color: black;
+    cursor: pointer;
+}
