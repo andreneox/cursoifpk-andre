@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 
 import PrimeiroComponente from "./components/PrimeiroComponente";
 import ams from "./assets/ams.jpg";
