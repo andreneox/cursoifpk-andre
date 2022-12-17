@@ -1,4 +1,5 @@
 const express = require('express')
+const cors  = require('cors')
 const app = express()
 const routes = require('./routes/routes')
 const apiroutes = require('./routes/apiRoutes')
@@ -13,7 +14,7 @@ app.engine('handlebars', engine({
         allowProtoMethodsByDefault: true,
     },
 }))
-
+app.use(cors())
 app.set('view engine','handlebars')
 
 app.use(express.urlencoded({extended:true}))
