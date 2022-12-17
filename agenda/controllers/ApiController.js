@@ -1,17 +1,13 @@
 const { Pessoas, Telefone } = require('../models')
 
-
-
-
 class ApiController {
-    static async index (req, res)
+    static async index(req,res)
     {
-        try{
-            const pessoas = await Pessoas.findAll({include:'telefones'})
+        try {
+            const pessoas = await Pessoas.findAll({include: 'telefones'})
             res.status(200).json({
                 data: pessoas
-            })
-
+            })    
         } catch (error) {
             res.status(500).json({
                 erro: true,
@@ -19,7 +15,6 @@ class ApiController {
             })
         }
     }
-
     static async store(req,res)
     {
         try {
@@ -28,98 +23,88 @@ class ApiController {
                 email: req.body.email,
                 data_nascimento: req.body.data_nascimento
             })
-            
             res.status(200).json({
-                data:pessoa
+                data: pessoa
             })
-            
-
         } catch (error) {
             res.status(500).json({
-                erro: true,
+                erro:true,
                 message: error.message
             })
         }
     }
-
-    static async update (req, res )
+    static async show(req,res)
+    {
+        try {
+            const pessoa = await Pessoas.findByPk(req.params.id, {include: 'telefones'})
+            if(!pessoa){
+                res.status(404).json({
+                    message:"Pessoa não encontrada!"
+                })
+            }else{
+                res.status(200).json({
+                    data:pessoa
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                erro:true,
+                message: error.message
+            })
+        }
+    }
+    static async update(req,res)
     {
         try {
             const pessoa = await Pessoas.findByPk(req.params.id)
             if(!pessoa){
                 res.status(404).json({
-                message: "Not found person!"
+                    message:"Pessoa não encontrada!"
                 })
-            } else{
-                pessoa.update({
-                    nome:req.body.name,
+            }else{
+                await pessoa.update({
+                    nome: req.body.nome,
                     email: req.body.email,
-                    data_nascimento:req.body.data_nascimento   
-                    }) 
-
-                    res.status(200).json({
-
-                        data:pessoa
-                    })
+                    data_nascimento: req.body.data_nascimento
+                })
+                res.status(200).json({
+                    data:pessoa
+                })
             }
+
         } catch (error) {
             res.status(500).json({
-                erro: true,
+                erro:true,
                 message: error.message
             })
         }
     }
-
-    static async show (req,res)
+    static async destroy(req,res)
     {
         try {
-            const pessoa = await Pessoas.findByPk(req.params.id)
-            if(!pessoa){
-                res.status(404).json({
-                message: "Not found person!"
-            })
-             } else{
-                res.status(200).json({
-                data:pessoa   
-            }) 
-            }                   
-            } 
-            catch (error) {
-                res.status(500).json({
-                    erro: true,
-                    message: error.message
-            })
-            }
-          
-    }
-
-    static async delete (req, res)
-        {
-            try {
-                const telefones = await Telefone.findAll({
-                    where:{
-                        pessoaId: req.params.id
-                    }
-                })
-                if(telefones){
-                    await telefones.map((telefone, index) => {
-                        telefone.destroy()
-                    })
+            const telefones = await Telefone.findAll({
+                where:{
+                    pessoaId: req.params.id
                 }
-                const pessoa = await Pessoas.findByPk(req.params.id)
-                await pessoa.destroy()
-
-                res.status(200).json({
-                    success:true,
-                    message:"Pessoa Deletada com Sucesso"
-                })
-            } catch (error) {
-                res.status(500).json({
-                    erro: true,
-                    message: error.message
             })
+            if(telefones){
+               await telefones.map((telefone, index)=>{
+                    telefone.destroy()
+                })
             }
-        }  
+            const pessoa = await Pessoas.findByPk(req.params.id)
+            await pessoa.destroy()
 
+            res.status(200).json({
+                success:true,
+                message: "Pessoa deletada com sucesso!"
+            })
+        } catch (error) {
+            res.status(500).json({
+                erro:true,
+                message: error.message
+            })
+        }
+    }
 }
 module.exports = ApiController

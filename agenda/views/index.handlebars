@@ -1,33 +1,29 @@
 <table class="table">
   <thead>
     <tr>
-      
+      <th>AÇÕES</th>
       <th scope="col">ID</th>
       <th scope="col">NOME</th>
       <th scope="col">EMAIL</th>
       <th scope="col">DATA DE NASCIMENTO</th>
       <th scope="col">TELEFONES</th>
-      <th scope="col">AÇÕES</th>
     </tr>
   </thead>
   <tbody>
     {{# each pessoas}}
     <tr>
-      
+      <th>
+        <a href="/show/{{this.id}}" class="btn btn-primary btn-sm">VER</a>
+        <a href="/atualizar/{{this.id}}" class="btn btn-success btn-sm">ATUALIZAR</a>
+        <a href="/deletar/{{this.id}}" class="btn btn-danger btn-sm">DELETAR</a>
+      </th>
       <th scope="row">{{this.id}}</th>
       <td>{{this.nome}}</td>
       <td>{{this.email}}</td>
       <td>{{this.data_nascimento}}</td>
-     
-        {{# each this.telefones}}
-        <td>{{this.numero}} </td>
-        {{/ each}}
-
-      <th>
-        <a href="/show/{{this.id}}" class="btn  btn-sm" style="background-color:#12d6f8" >VER</a> &nbsp;
-        <a href="/atualizar/{{this.id}}" class="btn  btn-sm" style="background-color:#ffdf52" >ATUALIZAR</a> &nbsp;
-        <a href="/deletar/{{this.id}}" class="btn  btn-sm" style="background-color:#f81244"  >DELETAR</a> &nbsp;
-      </th>
+      {{# each this.telefones}}
+        <td>{{this.numero}}</td>
+      {{/ each}}
     </tr>
     {{/ each}}
   </tbody>

@@ -1,13 +1,10 @@
 'use strict';
+const { User } = require('../models')
+const bcrypt = require('bcrypt')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('pessoas', [{
-      nome: 'José da Silva',
-      email: 'jose@admin.com',
-      data_nascimento: '1988-02-22'
-    }])
     /**
      * Add seed commands here.
      *
@@ -17,6 +14,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   const salt = await bcrypt.genSalt(12)
+   const passwordHash = await bcrypt.hash('admin', salt)
+    await User.create({
+      nome:'Administrador',
+      email: 'admin@admin.com',
+      password:passwordHash
+    })
   },
 
   async down (queryInterface, Sequelize) {
@@ -26,5 +30,10 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await User.findOne({
+      where: {
+        email: 'admin@admin.com'
+      }
+    }).destroy()
   }
 };

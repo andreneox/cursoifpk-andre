@@ -1,21 +1,16 @@
-const express = require ("express")
-const routes = express.Router()
-const ApiController =require ('../controllers/ApiController')
+const express = require('express')
+const ApiController = require('../controllers/ApiController')
+const routes  = express.Router()
 
-//todas as pessoas
-routes.get('/', ApiController.index )
+routes.get('/', ApiController.index) // visualizar todas as pessoas
 
-//criar uma pessoa
-routes.post('/store', ApiController.store )
+routes.post('/cadastro', ApiController.store) // cadastrar uma pessoa
 
-//mostrar uma pessoa por um id
-routes.get('/show/:id', ApiController.show )
+routes.get('/show/:id', ApiController.show)// exibir uma pessoa
 
-//editar uma pessoa
-routes.put('/update/:id', ApiController.update )
+routes.put('/editar/:id', ApiController.update)// atualizar uma pessoa
 
-//deletar uma pessoa
-routes.delete('/delete/:id', ApiController.delete )
+routes.delete('/apagar/:id', ApiController.destroy)// apagar uma pessoa
 
 
 module.exports = routes

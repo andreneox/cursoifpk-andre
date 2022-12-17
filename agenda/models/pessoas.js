@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.hasMany(models.Telefone, {
-        as : 'telefones',
+        as: 'telefones',
         foreignKey: 'pessoaId'
       })
     }
@@ -22,11 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     data_nascimento: {
       type: DataTypes.DATEONLY,
-      get(){
+      get() {
         const rawValue = this.getDataValue('data_nascimento')
-        return rawValue ? rawValue.split('-').reverse().join('/'): null
-      }
-      
+        return rawValue ? rawValue.split('-').reverse().join('/') : null
+      },
     }
   }, {
     sequelize,

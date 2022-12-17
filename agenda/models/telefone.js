@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Telefone.init({
     numero: DataTypes.STRING,
-    pessoaId: DataTypes.INTEGER,
+    pessoaId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Telefone',
