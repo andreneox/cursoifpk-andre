@@ -1,19 +1,25 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import api from "../config/api"
 
 const Login = () => {
 
     const [login, setLogin] = useState()
     const [senha, setSenha] = useState()
 
+    const navigate = useNavigate()
+
     const enviar = (event) => {
         event.preventDefault()
 
-        axios.post('http://localhost:3000/login',{
+        api.post('/login',{
             email: login,
             password: senha
         }) .then (({data})=>{
             console.log(data)
+            localStorage.setItem('token', data.token)   
+            navigate('/pessoas')
         }) .catch ((error)=>{
             console.log('Login ou Senha Incorreto')
         })

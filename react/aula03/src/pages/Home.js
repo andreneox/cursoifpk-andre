@@ -1,5 +1,5 @@
 const Home = () => {
-    return(
+    return (
         <div>
             <h2>
                 Página Inicial
