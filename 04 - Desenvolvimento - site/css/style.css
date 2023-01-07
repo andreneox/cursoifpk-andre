@@ -1,0 +1,202 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.color-azul {
+    color: #242f51 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #242f51 !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #fcae61 !important;
+}
+
+.btn-applab {
+    background-color: #2500f9;
+    color: #fff;
+    padding: 8px 25px;
+    border: 0;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.btn-applab:hover {
+    background-color: #fff;
+    border: 1px solid #2500f9;
+    color: #2500f9;
+}
+
+#imagem-celular {
+    height: 500px;
+}
+
+#titulo {
+    padding-top: 110px;
+}
+
+#apresentacao h1 {
+    font-weight: bold;
+    color: #242f51;
+}
+
+#apresentacao h5 {
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-applab-limpo {
+    border: 0px;
+    background-color: transparent;
+    color: #2500f9;
+}
+
+.btn-applab-limpo:hover {
+    text-decoration: underline;
+}
+
+#apresentacao {
+    background-image: url('../img/Vector Smart Object2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#cidadezinha {
+    background-image: url('../img/Layer 5.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+#sobre {
+    margin-top: 120px;
+}
+
+#sobre img {
+    height: 400px;
+}
+
+#sobre h2 {
+    font-weight: bold;
+    font-size: 25px;
+    width: 250px;
+    color: #242f51;
+}
+
+#sobre p {
+    color: #616368;
+    margin-top: 20px;
+    font-size: 14px;
+    width: 320px;
+}
+
+#funcionalidades h2, #faq h2 {
+    font-weight: bold;
+    width: 410px;
+    margin: 0 auto;
+}
+
+.text-explicativo {
+    color: #616368;
+    width: 480px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+#lista-funcionalidades h5 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#lista-funcionalidades p {
+    color: #616368;
+    font-size: 12px;
+}
+
+#accordionPanelsStayOpenExample {
+    width: 700px;
+    max-width: 100%;
+    margin: 50px auto;
+}
+
+.accordion-button, .accordion-body {
+    background-color: #eeeef0 !important;
+}
+
+.accordion-button {
+    box-shadow: initial !important;
+}
+
+.accordion-item {
+    border: 0px;
+    margin-bottom: 10px;
+}
+
+.accordion-button {
+    font-weight: bold;
+    color: #242f51 !important;
+    font-size: 15px;
+}
+
+.accordion-body {
+    font-size: 12px;
+    color: #616368;
+}
+
+#download {
+    margin-top: 100px;
+    padding-top: 40px;
+    background-image: url('../img/Vector Smart Object4.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    height: 300px;
+}
+
+#download h2 {
+    font-weight: bold;
+}
+
+#download p {
+    color: #616368;
+    font-size: 12px;
+    width: 450px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#download img {
+    width: 150px;
+}
+
+footer {
+    background-color: #09142e;
+    height: 400px;
+    padding-top: 80px;
+}
+
+footer img {
+    margin-bottom: 40px;
+}
+
+footer .nav-link {
+    color: #fff !important;
+    font-size: 12px;
+}
+
+.menu-inferior {
+    margin: 0 auto; 
+    width: 400px;
+}
+
+footer p {
+    font-size: 12px;
+}
