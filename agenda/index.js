@@ -4,6 +4,7 @@ const routes = require('./routes/routes')
 const apiroutes = require('./routes/apiRoutes')
 const { engine } = require('express-handlebars')
 const AuthController = require('./controllers/AuthController')
+const cors = require('cors')
 const middlewareValidaJwt = require('./validarJwt')
 require('dotenv').config()
 
@@ -13,6 +14,8 @@ app.engine('handlebars', engine({
         allowProtoMethodsByDefault: true,
     },
 }))
+
+app.use(cors())
 
 app.set('view engine','handlebars')
 
