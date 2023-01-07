@@ -51,7 +51,7 @@ const handleSubmit = () =>{
                         <Box sx={{width:'90%', display:'flex', flexDirection: 'column', margin:'0 auto', mt:3}} >
                             {error && (<Alert security="error" sx={{mb:3}}>{error}</Alert>)}
                             <TextField id="outlined-basic" fullWidth label="Usuario" variant="outlined" onChange={(e)=>setUsuario(e.target.value)} onFocus={(e)=>setError()} />
-                            <TextField id="outlined-basic" fullWidth sx={{my:4}}  label="Senha" variant="outlined" onChange={(e)=>setSenha(e.target.value)} onFocus={(e)=>setError()} />
+                            <TextField id="outlined-basic" fullWidth sx={{my:4}}  label="Senha" variant="outlined" onChange={(e)=>setSenha(e.target.value)}type="password" onFocus={(e)=>setError()} />
                         </Box>
                     
                 </Box>
