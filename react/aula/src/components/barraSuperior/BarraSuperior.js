@@ -5,42 +5,78 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TitleContext } from '../../context/TitleContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import HomeIcon from '@mui/icons-material/Home';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-const BarraSuperior = () =>{
 
-    const {title} = useContext(TitleContext);
-    const navigate =useNavigate()
+const BarraSuperior = () => {
 
-    const handleLogout = () => {
-        localStorage.removeItem('token' )
-        localStorage.removeItem('logado')
-        navigate ('/login')
+  const { title } = useContext(TitleContext);
+  const navigate = useNavigate()
+  
+  const [menuAberto, setMenuAberto] = useState(false)
+
+  const itensMenu = [
+    {
+      texto: 'Inicio', 
+      icone: (<HomeIcon/>),
+      to: '/'
+    },
+    {
+      texto: 'Cadastro de Pessoas', 
+      icone: (<PersonAddIcon/>),
+      to: '/cadastro'
     }
+  ]
 
-    return (
-        <Box sx={{ flexGrow: 1 }}>
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('logado')
+    navigate('/login')
+  }
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
+
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <MenuIcon sx={{ cursor: 'pointer' }} onClick={(e) => setMenuAberto(true)} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
           <Button color="inherit" onClick={handleLogout} >Sair</Button>
         </Toolbar>
+
+
+        <Drawer anchor='left' open={menuAberto}>
+          <Toolbar sx={{display:'flex', alignItems:'center', justifyContent: 'flex-end', px:[1]}}>
+              <IconButton edge='start' onClick={(e) => setMenuAberto(false)}   >
+                <ChevronLeftIcon/>
+                </IconButton>
+          </Toolbar>
+          <Divider/>
+          <List sx={{width:250}} >
+            {itensMenu.map(itensMenu => (
+              <Link key={itensMenu.texto} to={itensMenu.to} className="menuLink" >
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>{itensMenu.icone}</ListItemIcon>
+                    <ListItemText primary={itensMenu.texto}/>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+           ))}
+          </List>
+        </Drawer>
       </AppBar>
     </Box>
-    )
+  )
 }
 
 export default BarraSuperior
