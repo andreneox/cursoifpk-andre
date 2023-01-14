@@ -62,9 +62,9 @@ const Home = () => {
                                             {pessoa.nome}
                                         </TableCell>
 
-                                        <TableCell align="left">{pessoa.email}</TableCell>
-                                        <TableCell align="left">{pessoa.data_nascimento}</TableCell>
-                                        <TableCell align="left">{pessoa.telefones.map((telefone) => (
+                                        <TableCell align="center">{pessoa.email}</TableCell>
+                                        <TableCell align="center">{pessoa.data_nascimento}</TableCell>
+                                        <TableCell align="center">{pessoa.telefones.map((telefone) => (
                                             <>
                                                 {telefone.numero}
                                             </>
