@@ -11,6 +11,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import api from "../../services/Api"
 import { Box, Container } from '@mui/system';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { Button } from '@mui/material';
 
 const Home = () => {
     const [pessoas, setPessoas] = useState([])
@@ -35,6 +37,17 @@ const Home = () => {
 
     }, [setPessoas])
 
+    const handleDelete = (pessoa) => {
+      
+        api.delete('api/apagar/'+pessoa, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(({data})=>{
+            alert ('Deletado com sucesso!')
+        })
+    }
+
 
     return (
         <VerificaLogin>
@@ -45,11 +58,12 @@ const Home = () => {
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-
+                                    <TableCell align="right">Opções</TableCell>
                                     <TableCell align="right">Nome</TableCell>
                                     <TableCell align="right">Email</TableCell>
                                     <TableCell align="right">Data de Nascimento</TableCell>
                                     <TableCell align="right">telefone</TableCell>
+                                    
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -58,6 +72,8 @@ const Home = () => {
                                         key={pessoa.id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
+                                        
+                                        <TableCell align="right"> <Button onClick={()=>handleDelete(pessoa.id)}> <DeleteForeverIcon sx={{color: 'red'}} /></Button> </TableCell>
                                         <TableCell align="right" component="th" scope="row">
                                             {pessoa.nome}
                                         </TableCell>

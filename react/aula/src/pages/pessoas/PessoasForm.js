@@ -6,7 +6,7 @@ import api from "../../services/Api"
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container } from "@mui/system"
-import { Button, Divider, Alert, Paper,  } from "@mui/material"
+import { Button, Divider, Alert, Paper, Snackbar,  } from "@mui/material"
 
 const PessoasForm = () => {
 
@@ -15,7 +15,7 @@ const PessoasForm = () => {
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [data_nascimento, setData_nascimento] = useState('')
-    const [sucesso, setSucesso] = useState(false)
+    const [sucesso, setSucesso] = useState(true)
 
 
     const handleSubmit = () => {
@@ -28,7 +28,7 @@ const PessoasForm = () => {
                 'Authorization': localStorage.getItem('token')
             }
         }).then (({data})=>{
-            setSucesso( true)
+            setSucesso( false)
             // navigate ('/')
         })
     }
@@ -46,7 +46,9 @@ const PessoasForm = () => {
             <BarraSuperior />
             <Container>
                 <Box sx={{ p: 5, pb: 6, mt: 5, display: 'flex', flexDirection: 'column' }} component={Paper} >
-                    {sucesso && (<Alert security="success" sx={{mb:4}}>Registro Salvo com Sucesso!</Alert> )}
+                    <Snackbar open={sucesso}   >
+                        <Alert security="success" sx={{mb:4}}>Registro Salvo com Sucesso!</Alert>
+                    </Snackbar>
                     <Divider sx={{ color: 'gray', mt: 1, mb: 3 }} ><small>Digite as Informações no Formulário Abaixo</small></Divider>
                     <TextField focused sx={{ mb: 2 }} label="Nome" variant="standard" fullWidth autoFocus
                         onChange={(e) => setNome(e.target.value)} value={nome} />
