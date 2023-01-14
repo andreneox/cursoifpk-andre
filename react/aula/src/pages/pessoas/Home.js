@@ -46,10 +46,10 @@ const Home = () => {
                             <TableHead>
                                 <TableRow>
 
-                                    <TableCell align="center">Nome</TableCell>
-                                    <TableCell align="center">Email</TableCell>
-                                    <TableCell align="center">Data de Nascimento</TableCell>
-                                    <TableCell align="center">telefone</TableCell>
+                                    <TableCell align="right">Nome</TableCell>
+                                    <TableCell align="right">Email</TableCell>
+                                    <TableCell align="right">Data de Nascimento</TableCell>
+                                    <TableCell align="right">telefone</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -58,13 +58,13 @@ const Home = () => {
                                         key={pessoa.id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <TableCell align="left" component="th" scope="row">
+                                        <TableCell align="right" component="th" scope="row">
                                             {pessoa.nome}
                                         </TableCell>
 
-                                        <TableCell align="center">{pessoa.email}</TableCell>
-                                        <TableCell align="center">{pessoa.data_nascimento}</TableCell>
-                                        <TableCell align="center">{pessoa.telefones.map((telefone) => (
+                                        <TableCell align="right">{pessoa.email}</TableCell>
+                                        <TableCell align="right">{pessoa.data_nascimento}</TableCell>
+                                        <TableCell align="right">{pessoa.telefones.map((telefone) => (
                                             <>
                                                 {telefone.numero}
                                             </>
