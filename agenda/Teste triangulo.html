@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="Estilo-simulador.css">
+    <script src="js/script.js">defer</script>
+    <title>Triângulos</title>
+  </head>
+  <body>
+    
+      <script>
+        var l1 = parseInt(prompt("Digite o tamanho do lado 1: "))
+        var l2 = parseInt(prompt("Digite o tamanho do lado 2: "))
+        var l3 = parseInt(prompt("Digite o tamanho do lado 3: "))
+
+        if (l1<=0 || l2<=0 || l3<=0){
+            alert("Não é triângulo")
+        }
+        else{
+            if (l1==l2 & l1==l3){
+                alert("Trata-se de um triângulo EQUILÁTERO.")
+            }
+            else if (l1 != l2 & l1 != l3 & l2 != l3){
+                alert("Trata-se de um triângulo ESCALENO.")
+            }
+            else{
+                alert("Trata-se de um triângulo ISÓSCELES.")
+            }
+        }    
+
+        alert ("Obrigado por utilizar nosso classificador de triângulos. Aperte F5 para fazer um novo teste.")
+
+    </script> 
+  </body>
